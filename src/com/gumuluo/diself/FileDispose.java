@@ -8,9 +8,9 @@ public class FileDispose {
         public static short bytesToShort(byte[] data, boolean isLittleEndian) {
             short val;
             if (isLittleEndian) {
-                val = (short) ((short) data[1] << 8 | (short) data[0]);
+                val = (short) ((data[1] & 0xFF) << 8 | (data[0] & 0xFF));
             } else {
-                val = (short) ((short) data[0] << 8 | (short) data[1]);
+                val = (short) ((data[0] & 0xFF) << 8 | (data[1] & 0xFF));
             }
             return val;
         }
@@ -18,9 +18,9 @@ public class FileDispose {
         public static int bytesToInt(byte[] data, boolean isLittleEndian) {
             int val;
             if (isLittleEndian) {
-                val = (int) data[3] << 24 | (int) data[2] << 16 | (int) data[1] << 8 | (int) data[0];
+                val = (data[3] & 0xFF) << 24 | (data[2] & 0xFF) << 16 | (data[1] & 0xFF) << 8 | (data[0] & 0xFF);
             } else {
-                val = (int) data[0] << 24 | (int) data[1] << 16 | (int) data[2] << 8 | (int) data[3];
+                val = (data[0] & 0xFF) << 24 | (data[1] & 0xFF) << 16 | (data[2] & 0xFF) << 8 | (data[3] & 0xFF);
             }
             return val;
         }
@@ -28,11 +28,13 @@ public class FileDispose {
         public static long bytesToLong(byte[] data, boolean isLittleEndian) {
             long val;
             if (isLittleEndian) {
-                val = (long) data[7] << 56 | (long) data[6] << 48 | (long) data[5] << 40 | data[4] << 32 |
-                        data[3] << 24 | data[2] << 16 | data[1] << 8 | data[0];
+                val = (long) (data[7] & 0xFF) << 56 | (long) (data[6] & 0xFF) << 48 | (long) (data[5] & 0xFF) << 40 |
+                        (long) (data[4] & 0xFF) << 32 | (long) (data[3] & 0xFF) << 24 | (data[2] & 0xFF) << 16 |
+                        (data[1] & 0xFF) << 8 | (data[0] & 0xFF);
             } else {
-                val = (long) data[0] << 56 | (long) data[1] << 48 | (long) data[2] << 40 | data[3] << 32 |
-                        data[4] << 24 | data[5] << 16 | data[6] << 8 | data[7];
+                val = (long) (data[0] & 0xFF) << 56 | (long) (data[1] & 0xFF) << 48 | (long) (data[2] & 0xFF) << 40 |
+                        (long) (data[3] & 0xFF) << 32 | (long) (data[4] & 0xFF) << 24 | (data[5] & 0xFF) << 16 |
+                        (data[6] & 0xFF) << 8 | (data[7] & 0xFF);
             }
             return val;
         }
