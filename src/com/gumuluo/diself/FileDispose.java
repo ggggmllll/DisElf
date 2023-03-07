@@ -18,9 +18,9 @@ public class FileDispose {
         public static int bytesToInt(byte[] data, boolean isLittleEndian) {
             int val;
             if (isLittleEndian) {
-                val = (int) data[3] << 32 | (int) data[2] << 24 | (int) data[1] << 16 | (int) data[0];
+                val = (int) data[3] << 24 | (int) data[2] << 16 | (int) data[1] << 8 | (int) data[0];
             } else {
-                val = (int) data[0] << 32 | (int) data[1] << 24 | (int) data[2] << 16 | (int) data[3];
+                val = (int) data[0] << 24 | (int) data[1] << 16 | (int) data[2] << 8 | (int) data[3];
             }
             return val;
         }
