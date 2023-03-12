@@ -59,6 +59,10 @@ public class ElfHeader {
         this.e_shstrndx = this.fileDispose.readShort(62);
     }
 
+    public byte[] getE_ident() {
+        return e_ident;
+    }
+
     public short getE_type() {
         return e_type;
     }
